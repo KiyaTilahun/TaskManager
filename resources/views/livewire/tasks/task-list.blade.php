@@ -1,6 +1,6 @@
 <div class="w-7/12">
     {{-- task list --}}
-<livewire:tasks.tasks-count :count="$count">
+<livewire:tasks.tasks-count :tasksBystatus="$tasksBystatus">
     @foreach ($tasks as $task)
         <div
             class="my-4 px-4 py-6 bg-white rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Tasks;
 
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,6 +19,8 @@ public function placeholder(){
     #[On('task_created')]
     public function render()
     {
-        return view('livewire.tasks.task-list',['tasks'=>auth()->user()->tasks()->paginate(5),'count'=>auth()->user()->tasks()->count()]);
+        return view('livewire.tasks.task-list',['tasks'=>auth()->user()->tasks()->paginate(5),'tasksBystatus'=>auth()->user()->tasks()->select('status', DB::raw('COUNT(*) as count'))
+        ->groupBy('status')
+        ->get()]);
     }
 }
