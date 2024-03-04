@@ -9,7 +9,7 @@ enum StatusType: string
       case DONE = 'done';
 
 
-      public function color(): string
+      public function color():string 
       {
             return match ($this) {
                   self::STARTED => 'border-blue-500',

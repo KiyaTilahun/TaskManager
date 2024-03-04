@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire ;
+use App\Livewire\Imageindex;
 use App\Livewire\Tasks;
 use App\Livewire\Tasks\TasksIndex;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::get('tasks',Tasks::class);
+
+
 Route::get('taskIndex',TasksIndex::class)->middleware('auth')->name('task.index');
+Route::get('imageIndex',Imageindex::class)->middleware('auth')->name('image.index');
+
 
 
 Route::view('dashboard', 'dashboard')

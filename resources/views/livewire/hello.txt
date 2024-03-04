@@ -1,0 +1,1 @@
+ border-green-500 border-yellow-500 border-blue-500
