@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="flex justify-between">
+        <div class="flex justify-between pr-10  ">
             <div>
                 @foreach (App\Enums\StatusType::cases() as $case)
                
@@ -29,13 +29,17 @@
                     wire:click="changeStatus({{ $task->id }}, '{{ $case->value }}')"
                     wire:key="{{ $case->color() }}"
                         @class([
-                            'inline-flex items-center px-4 py-2 bg-white border rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150',
+                            'inline-flex items-center px-4 py-2 b g-white border rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150',
                             $case->color(),
                         ])
                         {{ $case->value == $task->status->value ? 'disabled' : '' }}>
                         {{ Str::of($case->value)->headline() }}
                     </button>
                 @endforeach
+            </div>
+            <div>
+                <x-primary-button wire:click="$dispatch('edit-task', {id: {{ $task->id }}})"
+                    class="bg-green-500 hover:bg-green-700">Edit</x-primary-button>
             </div>
         </div>
     @endforeach

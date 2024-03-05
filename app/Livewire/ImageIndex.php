@@ -45,6 +45,13 @@ public function images(){
     return Image::all();
 }
 
+public function download($id){
+$image=Image::find($id);
+
+return response()->download(storage_path('app/public/' . $image->path), 'image.png');
+
+}
+
     public function render()
     {
         return view('livewire.image-index')->layout('layouts.app');;
